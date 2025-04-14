@@ -8,9 +8,9 @@
 
 **Using Graph Databases, Semantic Search, and Community Signals**
 
-Finding a movie that matches your mood or taste shouldn't feel like solving a puzzle. That’s why we built an **agentic AI movie recommendation system** — a smart assistant that understands natural language queries and surfaces meaningful recommendations using a combination of **graph reasoning**, **semantic similarity**, and **community discussions**.
+Finding a movie that matches your mood or taste shouldn't feel like solving a puzzle. That's why we built an **agentic AI movie recommendation system** — a smart assistant that understands natural language queries and surfaces meaningful recommendations using a combination of **graph reasoning**, **semantic similarity**, and **community discussions**.
 
-Let’s break down how it works 👇
+Let's break down how it works 👇
 
 ---
 
@@ -30,7 +30,7 @@ When a user enters a search query, we use an **LLM (LLaMA 3.3)** to process the 
 
 If the query includes structured entities like _genres_, _directors_, or _release years_, we map the extracted elements into a **prebuilt Cypher query** to search our **Neo4j movie graph**.
 
-### 📊 What’s in the Graph?
+### 📊 What's in the Graph?
 
 - **49,369 nodes** including movies, people, genres, and years
 - **132,772 relationships**, like:
@@ -48,7 +48,7 @@ If the query includes structured entities like _genres_, _directors_, or _releas
 ## 🧬 Semantic Search for Similar Movies
 
 If the user asks for **movies similar to another movie**, e.g.  
-_“Show me movies like *The Departed*”_ —  
+_"Show me movies like *The Departed*"_ —  
 we switch to **semantic search**.
 
 ### How It Works:
@@ -83,6 +83,20 @@ For **"Search Letterboxd"**, the agent:
 
 ---
 
+### **Query-to-Movie Semantic Search**
+
+We also support **full-query semantic matching** — ideal when the user **describes the kind of movie** they want without naming one.
+
+> _Movies where the protagonist invents a time machine and travels back in time to his childhood to fix his mistakes_
+
+How it works:
+
+1. Embed the **entire query** using `jina-embeddings-v3`.
+2. Search the **Quadrant vector database** using cosine similarity.
+3. Fetch top-N most semantically similar movie summaries.
+
+---
+
 ## 🧰 Databases Used
 
 ### 1. **Neo4j Graph Database**
@@ -102,3 +116,12 @@ For **"Search Letterboxd"**, the agent:
 This hybrid system empowers users to explore the movie world using just natural language. Whether you're searching by genre, similarity, director, or online opinions — the AI understands your intent and routes the query through the best tool for the job.
 
 This is **agentic AI** in action — combining structured reasoning, semantic intelligence, and real-time web knowledge to help you find your next favorite film 🎥🍿
+
+---
+
+## 🔗 Project Links
+
+- [GitHub Repository Client](https://github.com/dibkb/cinema-lens-client)
+- [GitHub Repository Server](https://github.com/dibkb/cinema-lens-server)
+- [Live Link](https://cinema.borborah.xyz/)
+- [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/cinema-lens.mp4)
