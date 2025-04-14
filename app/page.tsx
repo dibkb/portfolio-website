@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
+import { ArrowUpRightIcon, XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
@@ -137,8 +137,11 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            Versatile full stack engineer pursuing a Master's in AI and ML, with
+            hands-on experience in fast-paced startup environments. Passionate
+            about building scalable web applications and exploring the
+            capabilities of LLM agents and intelligent systems. Thrives in
+            dynamic teams and enjoys solving complex problems across the stack.
           </p>
         </div>
       </motion.section>
@@ -150,24 +153,36 @@ export default function Personal() {
         <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
+            <article key={project.name + project.id} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
                 <ProjectVideo src={project.video} />
               </div>
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
+              <div className="rounded-lg px-2 pt-2 pb-4">
+                <header className="my-2 flex flex-row items-center justify-between">
+                  <Link
+                    href={project.blog}
+                    className="text-base font-medium text-zinc-900 transition-all duration-200 hover:underline dark:text-zinc-50"
+                    aria-label={`Read more about ${project.name}`}
+                  >
+                    {project.name}
+                  </Link>
+                  <a
+                    className="font-base group relative inline-flex items-center gap-1 text-sm font-[500] text-zinc-500 transition-colors duration-200 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-100"
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${project.name} project`}
+                  >
+                    Link{' '}
+                    <ArrowUpRightIcon className="h-4 w-4 text-zinc-500 transition-colors duration-200 group-hover:animate-bounce group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-zinc-100" />
+                  </a>
+                </header>
+
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </motion.section>

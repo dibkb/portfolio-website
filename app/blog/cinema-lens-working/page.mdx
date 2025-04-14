@@ -1,0 +1,104 @@
+<Cover
+  src="https://wallpapercave.com/wp/wp1945909.jpg"
+  alt="Image from https://wallpapercave.com/w/wp1945909"
+  caption="Image credits wallpapercave.com"
+/>
+
+# 🎬 Building an Agentic AI Movie Recommendation System
+
+**Using Graph Databases, Semantic Search, and Community Signals**
+
+Finding a movie that matches your mood or taste shouldn't feel like solving a puzzle. That’s why we built an **agentic AI movie recommendation system** — a smart assistant that understands natural language queries and surfaces meaningful recommendations using a combination of **graph reasoning**, **semantic similarity**, and **community discussions**.
+
+Let’s break down how it works 👇
+
+---
+
+## 🧠 Natural Language Understanding with LLMs
+
+When a user enters a search query, we use an **LLM (LLaMA 3.3)** to process the text. The model performs **Named Entity Recognition (NER)** to extract important information like:
+
+- 🎬 **Movie titles**
+- 👨‍🎤 **Actors / Directors**
+- 📅 **Years**
+- 🎭 **Genres**
+- 🌐 **Search modifiers** (e.g., "Search Reddit", "Letterboxd")
+
+---
+
+## 🕸️ Querying the Graph Database (Neo4j)
+
+If the query includes structured entities like _genres_, _directors_, or _release years_, we map the extracted elements into a **prebuilt Cypher query** to search our **Neo4j movie graph**.
+
+### 📊 What’s in the Graph?
+
+- **49,369 nodes** including movies, people, genres, and years
+- **132,772 relationships**, like:
+  - `ACTED_IN`
+  - `DIRECTED_BY`
+  - `HAS_GENRE`
+  - `RELEASED_IN`
+
+> Example:  
+> _"Show me action movies directed by Christopher Nolan"_  
+> → Cypher query pulls all action genre movies with the `DIRECTED_BY` relation pointing to Nolan.
+
+---
+
+## 🧬 Semantic Search for Similar Movies
+
+If the user asks for **movies similar to another movie**, e.g.  
+_“Show me movies like *The Departed*”_ —  
+we switch to **semantic search**.
+
+### How It Works:
+
+1. Extract the movie title (`The Departed`) using NER.
+2. Fetch its **summary embedding** from **Quadrant DB** (vector database).
+3. Perform **cosine similarity** search against other embedded movie summaries.
+4. Return the top N most similar results.
+
+> Embeddings are generated using `jina-embeddings-v3` and stored in **Quadrant**.
+
+---
+
+## 🧑‍🤝‍🧑 Community-Driven Discovery (Reddit + Letterboxd)
+
+Our agent can also leverage online movie communities:
+
+### 🔍 Reddit Integration
+
+If the query contains **"Search Reddit"**, the agent:
+
+1. Uses **Brave Search** to find top `reddit.com` links.
+2. Scrapes comment threads from those posts.
+3. Uses the LLM to **extract movie mentions** from user comments.
+
+### 📽️ Letterboxd Integration
+
+For **"Search Letterboxd"**, the agent:
+
+1. Finds top lists or reviews via Brave.
+2. **Directly extracts movie names** from curated Letterboxd lists (no scraping comments).
+
+---
+
+## 🧰 Databases Used
+
+### 1. **Neo4j Graph Database**
+
+- Stores structured relationships between movies, people, genres, and time.
+- Powers reasoning-style queries based on graph paths.
+
+### 2. **Quadrant Vector Database**
+
+- Stores dense embeddings of movie summaries.
+- Enables similarity search using cosine distance.
+
+---
+
+## 🚀 Bringing It All Together
+
+This hybrid system empowers users to explore the movie world using just natural language. Whether you're searching by genre, similarity, director, or online opinions — the AI understands your intent and routes the query through the best tool for the job.
+
+This is **agentic AI** in action — combining structured reasoning, semantic intelligence, and real-time web knowledge to help you find your next favorite film 🎥🍿
