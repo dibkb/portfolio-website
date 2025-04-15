@@ -119,6 +119,42 @@ This is **agentic AI** in action — combining structured reasoning, semantic in
 
 ---
 
+## 🧱 Tech Stack Overview
+
+Here’s a breakdown of the technologies that power this agentic movie recommendation system:
+
+### 🧠 Backend
+
+- **FastAPI (Python)** – High-performance API framework used to orchestrate the logic.
+- **LangChain** – Handles the flow of LLM chains including entity extraction, semantic routing, and custom tools.
+- **LLaMA 3.3** – The core large language model used for NER, comment understanding, query interpretation.
+- **Jina Embeddings v3** – Used to convert movie summaries and natural language queries into high-dimensional embeddings.
+- **Quadrant** – A scalable vector database used for all similarity and semantic search operations.
+- **Neo4j Aura** – Fully managed graph database storing all structured relationships between movies, genres, directors, etc.
+- **Brave Search** – Private search engine used to fetch relevant Reddit and Letterboxd results in real time.
+
+### 🔄 Real-time Query Flow
+
+- **Server-Sent Events (SSE)** – The backend streams intermediate events back to the frontend in real-time.  
+  Example:
+  - `Entity extracted: {"genre": "thriller", "director": "Nolan"}`
+  - `Cypher query executed...`
+  - `Vector search complete...`
+
+---
+
+### 🎨 Frontend
+
+- **Vite** – Ultra-fast frontend bundler powering the UI.
+- **State Management**:
+  - `nuqs` – For syncing state to the URL (perfect for sharable search sessions).
+  - `zustand` – Lightweight state management for application logic.
+- **Styling**:
+  - `shadcn/ui` – Headless UI components built on Radix UI.
+  - `Tailwind CSS` – Utility-first styling framework for fast UI prototyping.
+
+---
+
 ## 🔗 Project Links
 
 - [GitHub Repository Client](https://github.com/dibkb/cinema-lens-client)
