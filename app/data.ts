@@ -30,6 +30,16 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
+    name: 'Tesseract AI Code Editor',
+    blog: 'blog/tesseract-editor-working',
+    description:
+      'Turn screenshots into editable html/css/js with powerful AI code editor',
+    link: 'https://app.tesseract.borborah.xyz/',
+    video:
+      'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Tesss+Web+Video.mp4',
+    id: 'project2',
+  },
+  {
     name: 'Cinema Lens',
     blog: 'blog/cinema-lens-working',
     description:

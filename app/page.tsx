@@ -181,6 +181,13 @@ export default function Personal() {
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
+                <Link
+                  href={project.blog}
+                  className="font-base relative inline-flex items-center gap-1 text-xs font-[500] text-zinc-500 transition-colors duration-200 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-100"
+                  aria-label={`Read more about ${project.name}`}
+                >
+                  Read more...
+                </Link>
               </div>
             </article>
           ))}
