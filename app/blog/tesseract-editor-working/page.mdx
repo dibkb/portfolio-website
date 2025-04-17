@@ -4,160 +4,140 @@
   caption="Image credits unsplash.com"
 />
 
-# 🎬 Building an Agentic AI Movie Recommendation System
+# 🧠 Building an AI-Powered Web Code Editor from a Screenshot or Prompt
 
-**Using Graph Databases, Semantic Search, and Community Signals**
+**Using Multimodal LLMs, Monaco Editor, and Real-Time Code Generation**
 
-Finding a movie that matches your mood or taste shouldn't feel like solving a puzzle. That's why we built an **agentic AI movie recommendation system** — a smart assistant that understands natural language queries and surfaces meaningful recommendations using a combination of **graph reasoning**, **semantic similarity**, and **community discussions**.
+Turning ideas into working web code has always felt a bit clunky to me — so I decided to build something fun: an **AI-powered web code editor** you can run right in the browser.
 
-Let's break down how it works 👇
+You can start with a blank canvas, upload a screenshot of a website you like, or just type a prompt. Then the AI takes over.
 
----
+I used **LLaMA-4 Maverick** to convert screenshots into code, and **GPT-4o** to handle prompts and assist with edits. It’s all about making web development feel smooth, creative, and kinda magical — even if you're just experimenting on a weekend.
+Turn screenshots into HTML/CSS/JS, help you edit live code with context-aware chat, and even preview your changes in real-time.
 
-## 🧠 Natural Language Understanding with LLMs
-
-When a user enters a search query, we use an **LLM (LLaMA 3.3)** to process the text. The model performs **Named Entity Recognition (NER)** to extract important information like:
-
-- 🎬 **Movie titles**
-- 👨‍🎤 **Actors / Directors**
-- 📅 **Years**
-- 🎭 **Genres**
-- 🌐 **Search modifiers** (e.g., "Search Reddit", "Letterboxd")
+Let’s dive into how it works 👇
 
 ---
 
-## 🕸️ Querying the Graph Database (Neo4j)
+## 🛠️ How It Works
 
-If the query includes structured entities like _genres_, _directors_, or _release years_, we map the extracted elements into a **prebuilt Cypher query** to search our **Neo4j movie graph**.
+### 1. 🚀 Getting Started
 
-### 📊 What's in the Graph?
+You can begin your coding journey in one of three ways:
 
-- **49,369 nodes** including movies, people, genres, and years
-- **132,772 relationships**, like:
-  - `ACTED_IN`
-  - `DIRECTED_BY`
-  - `HAS_GENRE`
-  - `RELEASED_IN`
+- **Start with an empty template**
+- **Upload a screenshot of a website**
+- **Upload an image and generate render code**
 
-> Example:  
-> _"Show me action movies directed by Christopher Nolan"_  
-> → Cypher query pulls all action genre movies with the `DIRECTED_BY` relation pointing to Nolan.
+Once you provide an input, the editor spins into action — powered by LLaMA-4 Maverick (for screenshots) or GPT-4o (for prompts) — and generates clean, semantic HTML, CSS, and JavaScript.
 
 ---
 
-## 🧬 Semantic Search for Similar Movies
+### 2. 🧠 Screenshot-to-Code with LLaMA-4 Maverick
 
-If the user asks for **movies similar to another movie**, e.g.  
-_"Show me movies like *The Departed*"_ —  
-we switch to **semantic search**.
+When a screenshot is uploaded, we use **LLaMA-4 Maverick**, a multimodal model capable of visually understanding and interpreting layout, components, and design cues. It produces:
 
-### How It Works:
+- The full HTML structure
+- Relevant styling (CSS)
+- Any interactive behaviors (JavaScript)
 
-1. Extract the movie title (`The Departed`) using NER.
-2. Fetch its **summary embedding** from **Quadrant DB** (vector database).
-3. Perform **cosine similarity** search against other embedded movie summaries.
-4. Return the top N most similar results.
-
-> Embeddings are generated using `jina-embeddings-v3` and stored in **Quadrant**.
+This is especially useful when replicating existing website designs or UI inspiration from dribbble/Behance mockups.
 
 ---
 
-## 🧑‍🤝‍🧑 Community-Driven Discovery (Reddit + Letterboxd)
+### 3. 🧑‍💻 Code Editing with Monaco + Live Preview
 
-Our agent can also leverage online movie communities:
+The generated code is loaded into a **Monaco Editor** (the same code engine behind VS Code). This gives you:
 
-### 🔍 Reddit Integration
+- IntelliSense
+- Syntax highlighting
+- Autocompletion
 
-If the query contains **"Search Reddit"**, the agent:
-
-1. Uses **Brave Search** to find top `reddit.com` links.
-2. Scrapes comment threads from those posts.
-3. Uses the LLM to **extract movie mentions** from user comments.
-
-### 📽️ Letterboxd Integration
-
-For **"Search Letterboxd"**, the agent:
-
-1. Finds top lists or reviews via Brave.
-2. **Directly extracts movie names** from curated Letterboxd lists (no scraping comments).
+As you modify the code, the output is rendered live in an **iframe-based preview window**, allowing for immediate visual feedback.
 
 ---
 
-### **Query-to-Movie Semantic Search**
+### 4. 🪵 Console Window: See Logs in Action
 
-We also support **full-query semantic matching** — ideal when the user **describes the kind of movie** they want without naming one.
+To make debugging seamless, we built a **console window** that captures:
 
-> _Movies where the protagonist invents a time machine and travels back in time to his childhood to fix his mistakes_
+- `console.log()` output
+- Warnings
+- Errors
 
-How it works:
-
-1. Embed the **entire query** using `jina-embeddings-v3`.
-2. Search the **Quadrant vector database** using cosine similarity.
-3. Fetch top-N most semantically similar movie summaries.
+Everything you’d see in a typical browser dev console, now integrated right into your workspace.
 
 ---
 
-## 🧰 Databases Used
+### 5. 🤖 Context-Aware AI Chat Assistant
 
-### 1. **Neo4j Graph Database**
+Just like GitHub Copilot or Cursor, users can:
 
-- Stores structured relationships between movies, people, genres, and time.
-- Powers reasoning-style queries based on graph paths.
+- Select a portion of the code
+- Ask a question or give an instruction
 
-### 2. **Quadrant Vector Database**
+The **AI assistant (GPT-4o)** understands the selected context and responds with accurate suggestions or code snippets. The output can be directly injected into the editor — no manual copy-pasting required.
 
-- Stores dense embeddings of movie summaries.
-- Enables similarity search using cosine distance.
-
----
-
-## 🚀 Bringing It All Together
-
-This hybrid system empowers users to explore the movie world using just natural language. Whether you're searching by genre, similarity, director, or online opinions — the AI understands your intent and routes the query through the best tool for the job.
-
-This is **agentic AI** in action — combining structured reasoning, semantic intelligence, and real-time web knowledge to help you find your next favorite film 🎥🍿
+And thanks to the **Vercel AI SDK**, the responses are **streamed in real-time**, making the experience feel incredibly responsive.
 
 ---
 
-## 🧱 Tech Stack Overview
+### 6. 🖼️ Upload and Use Images Easily
 
-Here’s a breakdown of the technologies that power this agentic movie recommendation system:
+Users can upload custom images, which are stored securely on **Amazon S3**. From the **image window**, they can:
 
-### 🧠 Backend
+- Preview uploaded images
+- Copy pre-generated HTML code to embed those images
+- Paste directly into the HTML editor
 
-- **FastAPI (Python)** – High-performance API framework used to orchestrate the logic.
-- **LangChain** – Handles the flow of LLM chains including entity extraction, semantic routing, and custom tools.
-- **LLaMA 3.3** – The core large language model used for NER, comment understanding, query interpretation.
-- **Jina Embeddings v3** – Used to convert movie summaries and natural language queries into high-dimensional embeddings.
-- **Quadrant** – A scalable vector database used for all similarity and semantic search operations.
-- **Neo4j Aura** – Fully managed graph database storing all structured relationships between movies, genres, directors, etc.
-- **Brave Search** – Private search engine used to fetch relevant Reddit and Letterboxd results in real time.
-
-### 🔄 Real-time Query Flow
-
-- **Server-Sent Events (SSE)** – The backend streams intermediate events back to the frontend in real-time.  
-  Example:
-  - `Entity extracted: {"genre": "thriller", "director": "Nolan"}`
-  - `Cypher query executed...`
-  - `Vector search complete...`
+Perfect for designing web pages that include assets like icons, logos, or product images.
 
 ---
 
-### 🎨 Frontend
+### 7. 🌐 One-Click Deploy with Netlify
 
-- **Vite** – Ultra-fast frontend bundler powering the UI.
-- **State Management**:
-  - `nuqs` – For syncing state to the URL (perfect for sharable search sessions).
-  - `zustand` – Lightweight state management for application logic.
-- **Styling**:
-  - `shadcn/ui` – Headless UI components built on Radix UI.
-  - `Tailwind CSS` – Utility-first styling framework for fast UI prototyping.
+Once your website looks good in the preview, you can hit a **"Deploy"** button — and boom 💥 — it's live!
+
+I hooked it up with the **Netlify API**, so with a single click, your project gets deployed and you instantly get a **shareable live link**. No need to fiddle with configs or hosting — it’s just part of the fun.
+
+Perfect for showing off to friends, testing something real quick, or sharing a prototype with someone.
+
+## ⚙️ Tech Stack
+
+Here's a peek into the technologies powering this AI-first editor:
+
+### 🧠 AI Models
+
+- `LLaMA-4 Maverick` — Multimodal model for screenshot-to-code
+- `GPT-4o` — Prompt-based code generation and context-aware chat
+
+### 🧰 Frameworks & SDKs
+
+- `Next.js` — React-based frontend framework
+- `Vercel AI SDK` — Real-time streaming of AI responses
+- `Mastra AI` — AI orchestration and agent management
+- `Netlify API` - Instant deployment of the website
+
+### 💻 Code & UI
+
+- `Monaco Editor` — The same editor behind VS Code
+- `Iframe` — Live rendering of HTML/CSS/JS output
+- `Console Interceptor` — Integrated debugging console
+
+### ☁️ Storage
+
+- `Amazon S3` — For image uploads and access
 
 ---
+
+## ✨ Wrapping Up
+
+This editor brings together the best of AI, developer UX, and modern web tooling — letting creators and devs go from **idea → screenshot → working website** in minutes.
+
+No extensions, no heavy IDEs. Just pure AI magic in your browser.
 
 ## 🔗 Project Links
 
-- [GitHub Repository Client](https://github.com/dibkb/cinema-lens-client)
-- [GitHub Repository Server](https://github.com/dibkb/cinema-lens-server)
-- [Live Link](https://cinema.borborah.xyz/)
-- [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/cinema-lens.mp4)
+- [GitHub Repository](https://github.com/dibkb/tesseract)
+- [Live Link](https://app.tesseract.borborah.xyz/)
+- [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Tesss+Web+Video.mp4)
