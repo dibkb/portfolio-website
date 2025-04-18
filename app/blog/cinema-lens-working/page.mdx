@@ -10,6 +10,45 @@
 
 Finding a movie that matches your mood or taste shouldn't feel like solving a puzzle. That's why we built an **agentic AI movie recommendation system** — a smart assistant that understands natural language queries and surfaces meaningful recommendations using a combination of **graph reasoning**, **semantic similarity**, and **community discussions**.
 
+## 🔗 Project Links
+
+- [GitHub Repository Client](https://github.com/dibkb/cinema-lens-client)
+- [GitHub Repository Server](https://github.com/dibkb/cinema-lens-server)
+- [Live Link](https://cinema.borborah.xyz/)
+- [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/cinema-lens.mp4)
+
+## ⚙️ Tech Stack
+
+Here’s a peek into the technologies powering this agentic movie recommendation system:
+
+### 🧠 AI & Backend Intelligence
+
+- `FastAPI (Python)` — High-performance API orchestration
+- `LangChain` — LLM chain management, entity extraction & tool routing
+- `LLaMA 3.3` — Core LLM for NER, sentiment understanding, and query parsing
+- `Jina Embeddings v3` — Converts text into vector space for semantic matching
+- `Quadrant` — Vector database for similarity search
+- `Neo4j Aura` — Graph database for movie relationships (genres, directors, etc.)
+- `Brave Search` — Real-time web search for Reddit and Letterboxd integration
+
+### 🔄 Real-time Query Flow
+
+- `Server-Sent Events (SSE)` — Streams intermediate updates like:
+  - `✅ Entity extracted: { "genre": "thriller", "director": "Nolan" }`
+  - `📊 Cypher query executed...`
+  - `🔍 Vector search complete...`
+
+### 🎨 Frontend Framework
+
+- `Vite` — Ultra-fast frontend bundler for blazing-fast dev experience
+
+### 🧰 State & Styling
+
+- `nuqs` — Syncs search state to URL for sharable sessions
+- `zustand` — Lightweight and reactive state store
+- `shadcn/ui` — Accessible UI components powered by Radix
+- `Tailwind CSS` — Utility-first styling for consistent design
+
 Let's break down how it works 👇
 
 ---
@@ -118,46 +157,3 @@ This hybrid system empowers users to explore the movie world using just natural 
 This is **agentic AI** in action — combining structured reasoning, semantic intelligence, and real-time web knowledge to help you find your next favorite film 🎥🍿
 
 ---
-
-## 🧱 Tech Stack Overview
-
-Here’s a breakdown of the technologies that power this agentic movie recommendation system:
-
-### 🧠 Backend
-
-- **FastAPI (Python)** – High-performance API framework used to orchestrate the logic.
-- **LangChain** – Handles the flow of LLM chains including entity extraction, semantic routing, and custom tools.
-- **LLaMA 3.3** – The core large language model used for NER, comment understanding, query interpretation.
-- **Jina Embeddings v3** – Used to convert movie summaries and natural language queries into high-dimensional embeddings.
-- **Quadrant** – A scalable vector database used for all similarity and semantic search operations.
-- **Neo4j Aura** – Fully managed graph database storing all structured relationships between movies, genres, directors, etc.
-- **Brave Search** – Private search engine used to fetch relevant Reddit and Letterboxd results in real time.
-
-### 🔄 Real-time Query Flow
-
-- **Server-Sent Events (SSE)** – The backend streams intermediate events back to the frontend in real-time.  
-  Example:
-  - `Entity extracted: {"genre": "thriller", "director": "Nolan"}`
-  - `Cypher query executed...`
-  - `Vector search complete...`
-
----
-
-### 🎨 Frontend
-
-- **Vite** – Ultra-fast frontend bundler powering the UI.
-- **State Management**:
-  - `nuqs` – For syncing state to the URL (perfect for sharable search sessions).
-  - `zustand` – Lightweight state management for application logic.
-- **Styling**:
-  - `shadcn/ui` – Headless UI components built on Radix UI.
-  - `Tailwind CSS` – Utility-first styling framework for fast UI prototyping.
-
----
-
-## 🔗 Project Links
-
-- [GitHub Repository Client](https://github.com/dibkb/cinema-lens-client)
-- [GitHub Repository Server](https://github.com/dibkb/cinema-lens-server)
-- [Live Link](https://cinema.borborah.xyz/)
-- [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/cinema-lens.mp4)

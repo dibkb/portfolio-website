@@ -14,33 +14,44 @@ Welcome to a behind-the-scenes breakdown of our **AI-powered platform** designed
 - [Live Link](https://excel.borborah.xyz/) (scraper not working on prod..😢/prefer local setup)
 - [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Amazon+Excel+Demo.mp4)
 
-## 🛠 Tech Stack
+## ⚙️ Tech Stack
 
-### 🖥 Frontend
+Here's a peek into the technologies powering this AI-first Amazon product enhancement suite:
 
-- **Next.js** – React-based framework for building fast and scalable UIs
-- **ShadCN UI** – Beautiful and accessible component library
-- **Tailwind CSS** – Utility-first styling
-- **Drizzle ORM** – Type-safe and SQL-friendly ORM
-- **Zod** – Schema validation for TypeScript
-- **Zustand** – Lightweight state management
-- **Pigeon Maps** – Interactive maps with IP/geolocation tracking
+### 🧠 AI Models
 
-### ⚙️ Backend
+- `LLaMA-4 Maverick` — Local LLM for sentiment analysis, product enhancement, and copy generation
+- `GPT-4o` — Context-rich reasoning and fallback for complex queries
+- `LangChain` — LLM orchestration, agent routing, and prompt management
 
-- **FastAPI** – High-performance Python API framework
-- **LangChain** – LLM orchestration and chaining
-- **Groq (LLaMA 4 Maverick)** – Primary LLM for local inference
-- **OpenAI (GPT-4o)** – Backup/complex query handling
-- **PostgreSQL** – Relational database for storing all structured data
-- **Playwright + BeautifulSoup** – Web scraping for Amazon product pages
+### 🧰 Frameworks & SDKs
+
+- `FastAPI` — High-performance Python backend for APIs
+- `Next.js` — React-based frontend framework for dynamic UI
+- `Drizzle ORM` — Type-safe ORM for interacting with PostgreSQL
+- `Zod` — Schema validation for forms and API data
+- `Zustand` — Lightweight state management in the frontend
+- `Pigeon Maps` — IP tracking and geolocation mapping
+- `BeautifulSoup + Playwright` — Headless scraping and DOM parsing engine
+
+### 💻 Code & UI
+
+- `ShadCN UI` — Accessible and elegant UI components
+- `Tailwind CSS` — Utility-first styling for consistent design
+- `Monaco Editor` _(coming soon)_ — Rich text/code editing for custom copy tweaks
+
+### ☁️ Storage & Infrastructure
+
+- `PostgreSQL` — Relational database for persistent storage
+- `Amazon EC2` — Cloud instance for hosting the backend services
+- `Docker` — Containerized deployments for portability
+- `Nginx` — Reverse proxy and server manager
 
 ### 🚀 CI/CD & Deployment
 
-- **GitLab CI** – Continuous integration and automated pipelines
-- **Docker** – Containerization of backend services
-- **AWS EC2** – Cloud hosting and infrastructure
-- **Nginx** – Reverse proxy and server management
+- `GitLab CI` — Automated testing and deployment pipelines
+- `AWS EC2` — Hosting the FastAPI backend with Docker
+- `Nginx` — Serving static frontend & proxying backend endpoints
 
 ---
 
