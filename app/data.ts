@@ -40,6 +40,16 @@ export const PROJECTS: Project[] = [
     id: 'project2',
   },
   {
+    name: 'Amazon SWOT AI Optimizer',
+    blog: 'blog/excel-ai',
+    description:
+      'Analyze reviews, run A/B tests, and improve Amazon listings with AI-powered insights',
+    link: 'https://excel.borborah.xyz/',
+    video:
+      'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Amazon+Excel+Demo.mp4',
+    id: 'project2',
+  },
+  {
     name: 'Cinema Lens',
     blog: 'blog/cinema-lens-working',
     description:
