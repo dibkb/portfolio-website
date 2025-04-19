@@ -10,8 +10,17 @@ import {
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
-import { JobExperienceDropdown } from '@/components/ui/work-exp'
-import { PROJECTS, WORK_EXPERIENCE, EMAIL, SOCIAL_LINKS } from './data'
+import {
+  EducationPreview,
+  JobExperienceDropdown,
+} from '@/components/ui/work-exp'
+import {
+  PROJECTS,
+  WORK_EXPERIENCE,
+  EMAIL,
+  SOCIAL_LINKS,
+  EDUCATION,
+} from './data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -203,6 +212,18 @@ export default function Personal() {
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <JobExperienceDropdown key={job.id} job={job} />
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Education</h3>
+        <div className="flex flex-col space-y-2">
+          {EDUCATION.map((education) => (
+            <EducationPreview key={education.school} education={education} />
           ))}
         </div>
       </motion.section>

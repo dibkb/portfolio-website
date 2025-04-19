@@ -7,7 +7,7 @@ type Project = {
   id: string
 }
 
-type WorkExperience = {
+export type WorkExperience = {
   company: string
   title: string
   start: string
@@ -29,6 +29,13 @@ type SocialLink = {
   link: string
 }
 
+export type Education = {
+  school: string
+  degree: string
+  start: string
+  end: string
+  cgpa: number
+}
 export const PROJECTS: Project[] = [
   {
     name: 'Tesseract AI Code Editor',
@@ -134,6 +141,23 @@ export const BLOG_POSTS: BlogPost[] = [
       'A look back at my first year of freelancing and what I learned',
     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
     uid: 'blog-3',
+  },
+]
+export const EDUCATION: Education[] = [
+  {
+    school: 'Indian Institute of Information Technology Lucknow',
+    degree:
+      'Master of Science (Msc) Machine Learning and Artificial Intelligence',
+    start: 'August 2023',
+    end: '2025',
+    cgpa: 9.09,
+  },
+  {
+    school: 'Dibrugarh University ',
+    degree: 'Bachelor of Science (Bsc Honors) Mathematics ',
+    start: 'June 2019',
+    end: 'May 2022',
+    cgpa: 8.82,
   },
 ]
 
