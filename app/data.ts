@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     link: 'https://app.tesseract.borborah.xyz/',
     video:
       'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Tesss+Web+Video.mp4',
-    id: 'project2',
+    id: 'project21',
   },
   {
     name: 'Amazon SWOT AI Optimizer',
@@ -58,6 +58,16 @@ export const PROJECTS: Project[] = [
     video:
       'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/cinema-lens.mp4',
     id: 'project1',
+  },
+  {
+    name: 'LLM Browser Automation',
+    blog: 'blog/browser-automation',
+    description:
+      'Automate simple tasks with a browser automation chatbot agent',
+    link: 'https://github.com/dibkb/moonshot',
+    video:
+      'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Automation+Video.mp4',
+    id: 'project4',
   },
 ]
 

@@ -19,5 +19,39 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </figure>
       )
     },
+    Video: ({
+      src,
+      title,
+      caption,
+      autoPlay = false,
+      controls = true,
+      muted = false,
+      loop = false,
+    }: {
+      src: string
+      title?: string
+      caption?: string
+      autoPlay?: boolean
+      controls?: boolean
+      muted?: boolean
+      loop?: boolean
+    }) => {
+      return (
+        <figure className="my-8">
+          <video
+            src={src}
+            title={title}
+            autoPlay={autoPlay}
+            controls={controls}
+            muted={muted}
+            loop={loop}
+            className="w-full rounded-xl"
+          />
+          {caption && (
+            <figcaption className="mt-2 text-center">{caption}</figcaption>
+          )}
+        </figure>
+      )
+    },
   }
 }
