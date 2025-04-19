@@ -14,6 +14,7 @@ type WorkExperience = {
   end: string
   link: string
   id: string
+  details: string[]
 }
 
 type BlogPost = {
@@ -79,6 +80,12 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     end: 'Present',
     link: 'https://ibelick.com',
     id: 'work1',
+    details: [
+      'Led product development and strategy',
+      'Managed client relationships and project scopes',
+      'Developed custom solutions for enterprise clients',
+      'Built and managed a team of developers and designers',
+    ],
   },
   {
     company: 'Freelance',
@@ -87,6 +94,12 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     end: '2024',
     link: 'https://ibelick.com',
     id: 'work2',
+    details: [
+      'Created responsive web applications with React and Next.js',
+      'Designed and implemented UI/UX for various clients',
+      'Integrated third-party APIs and services',
+      'Optimized performance for production applications',
+    ],
   },
   {
     company: 'Freelance',
@@ -95,6 +108,12 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     end: 'Present',
     link: 'https://ibelick.com',
     id: 'work3',
+    details: [
+      'Built custom websites and web applications',
+      'Implemented responsive design principles',
+      'Worked with various JavaScript frameworks',
+      'Created and maintained component libraries',
+    ],
   },
 ]
 

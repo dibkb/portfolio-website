@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
 import { ArrowUpRightIcon, XIcon } from 'lucide-react'
-import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
   MorphingDialog,
@@ -11,14 +10,8 @@ import {
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import {
-  PROJECTS,
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-} from './data'
+import { JobExperienceDropdown } from '@/components/ui/work-exp'
+import { PROJECTS, WORK_EXPERIENCE, EMAIL, SOCIAL_LINKS } from './data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -137,15 +130,19 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Versatile full stack engineer pursuing a Master's in AI and ML, with
-            hands-on experience in fast-paced startup environments. Passionate
-            about building scalable web applications and exploring the
-            capabilities of LLM agents and intelligent systems. Thrives in
-            dynamic teams and enjoys solving complex problems across the stack.
+            Versatile full stack engineer currently pursuing a Master's in AI
+            and ML, with hands-on experience in fast-paced startup environments.
+            I'm passionate about building scalable web applications and diving
+            deep into the world of LLM agents and intelligent systems.
             <br />
             <br />
-            When not deep in code, you'll find me racing through Forza, watching
-            anime, badminton, cardio, or a chill swim. Work hard, play harder 🙌
+            I thrive in dynamic, collaborative teams and love solving complex
+            problems across the stack — from frontend finesse to backend logic.
+            <br />
+            <br />
+            When I'm not immersed in code, you'll catch me racing in Forza,
+            bingeing anime, or staying active with badminton, cardio, and
+            swimming. Work hard, play harder. 🙌
           </p>
         </div>
       </motion.section>
@@ -205,33 +202,7 @@ export default function Personal() {
         <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
-                    </p>
-                  </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
-                </div>
-              </div>
-            </a>
+            <JobExperienceDropdown key={job.id} job={job} />
           ))}
         </div>
       </motion.section>
