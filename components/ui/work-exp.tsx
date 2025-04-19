@@ -37,7 +37,7 @@ export function JobExperienceDropdown({ job }: JobExperienceDropdownProps) {
             <p className="text-zinc-500 dark:text-zinc-400">{job.company}</p>
           </div>
           <div className="flex items-center gap-2">
-            <p className="text-zinc-600 dark:text-zinc-400">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
               {job.start} - {job.end}
             </p>
             {isOpen ? (
