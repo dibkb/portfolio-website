@@ -48,6 +48,16 @@ export const PROJECTS: Project[] = [
     id: 'project21',
   },
   {
+    name: 'BroTube - Youtube on steroids',
+    blog: 'blog/bro-tube',
+    description:
+      'Chat with Youtube videos, get sentiments of comments, and more',
+    link: 'https://brotube.borborah.xyz/',
+    video:
+      'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/brotube.mp4',
+    id: 'project443',
+  },
+  {
     name: 'Amazon SWOT AI Optimizer',
     blog: 'blog/excel-ai',
     description:
