@@ -91,10 +91,23 @@ export const PROJECTS: Project[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
+    company: 'Roger AI (YC W24)',
+    title: 'Founding Engineer',
+    start: 'June 2025',
+    end: 'Present',
+    link: 'https://www.hireroger.com/',
+    id: 'work01',
+    details: [
+      'Engineered a sophisticated lead generation tool leveraging Chrome extension architecture and agentic AI workflows',
+      'Architected a custom multi-agent AI system achieving 62% performance improvement: reduced response time from 60s to 23s compared to GPT-research-tool',
+      'Made internal dashbaords for tracking client leads and sales',
+    ],
+  },
+  {
     company: 'Interface Labs',
     title: 'Full Stack Engineer (Intern)',
     start: 'August 2024',
-    end: 'Present',
+    end: 'May 2025',
     link: 'https://www.getinterface.tech/',
     id: 'work1',
     details: [
