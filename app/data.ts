@@ -132,7 +132,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
   {
     company: 'StockInsights',
-    title: 'Frontend Engineer Intern',
+    title: 'Frontend Engineer (Intern)',
     start: 'April 2023',
     end: 'June 2023',
     link: 'https://www.stockinsights.ai/',
