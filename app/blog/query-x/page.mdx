@@ -1,0 +1,150 @@
+# 🎬 Plex-Deeper: AI-Powered Media Description Generator
+
+<Video
+  src={
+    'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/query-x-demo.mp4'
+  }
+  title="Demo working preview"
+  caption="Demo working preview"
+  controls={true}
+  autoPlay={true}
+  muted={true}
+  loop={true}
+/>
+
+Welcome to **Plex-Deeper** — a full-stack, agent-driven platform that **creates rich media descriptions** (short, detailed, images & sources) in _near-realtime_ while off-loading heavy LLM workloads to background workers.
+
+> 👉 Built with **Next.js 15** (App Router) on the frontend and a **Mastra-orchestrated** AI backend, Plex-Deeper keeps the developer experience _local-first_ (Redis + Postgres) while remaining cloud-ready for Vercel, Fly.io & Neon.
+
+---
+
+## 🔗 Project Links
+
+- [GitHub – App](https://github.com/dibkb/plex-deeper)
+- [GitHub – Extension](https://github.com/dibkb/query-x-extension)
+- [Video Demo](https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/query-x-demo.mp4)
+
+---
+
+## ⚡ Tech Stack Overview
+
+- **Client/UI** → Next.js 15, React 19, Server Components, Tailwind v4, shadcn/ui, `next-themes`, React-Query
+- **API Runtime** → Next.js Edge/Server, REST-style API Routes (`/app/api/**`)
+- **Queue & Messaging** → Bee-Queue + Redis
+- **Database / ORM** → Postgres (local → Neon), Drizzle ORM + `drizzle-kit` migrations
+- **AI Orchestration** → Mastra agents & workflows, `@mastra/memory`
+- **Workers** → Stand-alone Node processes
+
+---
+
+## 🏗️ High-Level Architecture
+
+<img src={'/query-x.svg'} />
+
+## 🛠️ Request Lifecycle (Example)
+
+1. **User types text** → `useDebounce` fires → **React-Query** mutation hits `/api/query`.
+2. **API Route**
+   - Stores a row in `queries` table _(status = "pending")_.
+   - Enqueues a `short-description` job in **Redis**.
+3. **Worker** (`workers/short-description.ts`)
+   - Pops job → runs **Mastra** workflow.
+   - Persists LLM output → updates DB row to `completed`.
+4. **Client** polls (soon WebSocket) until status==`completed` → updates UI in near-realtime.
+
+---
+
+## 🧩 Major Sub-Systems
+
+### 1. Client / UI
+
+- **Next.js 15** App Router with Server Components.
+- **Tailwind v4** & `shadcn/ui` for design-system primitives.
+- Dark / light mode via `next-themes`.
+- **React-Query** handles caching & background-refetch.
+- **Chrome Extension Scraper** (`query-x-extension`) runs in the user's browser, scrapes page metadata/content and posts it to `/api/scrape` for downstream processing.
+
+### 2. API Layer
+
+- REST-like routes under `/app/api/**`.
+- Light CRUD with **Drizzle ORM**.
+- Job enqueue logic lives in `lib/queue.ts`.
+
+### 3. Queue & Messaging
+
+- **Bee-Queue** atop **Redis**.
+- Separate queues: `short-description`, `detailed-description`, `image-generation`, etc.
+- Guarantees _at-least-once_ delivery; workers ensure idempotency.
+
+### 4. Background Workers
+
+- Written in TypeScript, executed with **tsx**.
+- Each worker listens to a single queue & invokes **Mastra** workflows.
+
+### 5. AI Orchestration (Mastra)
+
+- **Agents** (`src/mastra/agents/**`) for focused tasks (Google Search, auto-complete).
+- **Workflows** (`src/mastra/workflows/**`) coordinate multi-step reasoning with **Zod** schema validation.
+- Conversation memory powered by `@mastra/memory` backed by Postgres.
+
+### 6. Database Layer
+
+- **Postgres** (local Docker or **Neon Serverless**).
+- Strict typing via **Drizzle**.
+- Migrations under `/migrations/*`.
+
+---
+
+```env
+# Required ENV Vars
+DATABASE_URL=postgres://...
+REDIS_HOST=...
+REDIS_PORT=6379
+OPENAI_API_KEY=sk-...
+MASTRA_API_KEY=...
+```
+
+---
+
+## 🔮 Roadmap
+
+- Replace polling with **WebSockets / SSE**.
+- Redis cache layer for repeat LLM prompts.
+- **OpenTelemetry** tracing around Mastra calls.
+- Feature flags via **Unleash**.
+- Helm charts for Kubernetes-native deploys.
+
+---
+
+## 📂 Folder Cheat-Sheet
+
+```
+app/            Next.js pages, components, API routes
+workers/        Stand-alone job processors
+src/mastra/     Agents, workflows, models
+lib/            Helpers (queue, redis, utils)
+hooks/          React hooks
+migrations/     DB schema evolution
+components/ui   Design-system primitives
+```
+
+---
+
+## 🚀 Run Locally
+
+```bash
+# 1. Clone & install deps
+pnpm i
+
+# 2. Start Postgres & Redis (Docker-Compose)
+docker compose up -d postgres redis
+
+# 3. Run migrations
+drzl push
+
+# 4. Launch everything
+pnpm dev      # Next.js frontend & API
+pnpm worker   # Background workers (tsx node)
+```
+
+Enjoy building with **Plex-Deeper** and feel free to contribute! 🎉
