@@ -51,7 +51,7 @@ export const PROJECTS: Project[] = [
     blog: 'blog/tesseract-editor-working',
     description:
       'Turn screenshots into editable html/css/js with powerful AI code editor',
-    link: 'https://app.tesseract.borborah.xyz/',
+    link: 'https://tesseract.borborah.xyz',
     video:
       'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/Tesss+Web+Video.mp4',
     id: 'project21',
