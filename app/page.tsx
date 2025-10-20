@@ -150,8 +150,9 @@ export default function Personal() {
             <br />
             <br />
             When I'm not immersed in code, you'll catch me racing in Forza,
-            bingeing anime, or staying active with badminton, cardio, and
-            swimming. Work hard, play harder. 🙌
+            living out my cowboy fantasies in Red Dead Redemption 2, bingeing
+            anime, or staying active with badminton, cardio, and swimming. Work
+            hard, play harder (and occasionally rob trains). 🤠🙌
           </p>
         </div>
       </motion.section>

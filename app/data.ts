@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
     name: 'Query X ',
     blog: 'blog/query-x',
     description: 'Perplexity Clone.',
-    link: 'https://github.com/dibkb/plex-deeper',
+    link: 'https://query.borborah.xyz',
     video:
       'https://dibkb-tesseract-images.s3.ap-south-1.amazonaws.com/website/demo-videos/query-x-demo.mp4',
     id: 'project212',
