@@ -27,6 +27,58 @@ Welcome to **Plex-Deeper** — a full-stack, agent-driven platform that **create
 
 ---
 
+## 🚀 How to Use Query X Extension
+
+To get the full experience of Query X, you'll need to install the Chrome extension that scrapes page content and metadata. Here's how to set it up:
+
+### Step 1: Clone and Install Extension
+
+```bash
+# Clone the extension repository
+git clone https://github.com/dibkb/query-x-extension
+
+# Navigate to the extension directory and install dependencies
+cd query-x-extension && pnpm install
+```
+
+### Step 2: Build the Extension
+
+```bash
+# Build the extension to create the dist folder
+pnpm run build
+```
+
+### Step 3: Load Extension in Chrome
+
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable **"Developer mode"** (toggle in top right corner)
+3. Click **"Load unpacked"** and select the `dist` folder from the extension directory
+
+### Step 4: Get Extension ID
+
+1. After loading the extension, you'll see it listed on the `chrome://extensions/` page
+2. Look for the **Extension ID** under your Query X extension (it will look like: `lmahehkeleeobdljhkilajlgebegemfl`)
+3. Copy this ID - you'll need it for the next step
+
+### Step 5: Configure Extension ID in Query X
+
+1. Go to the [Query X live application](https://query.borborah.xyz)
+2. You'll see an extension setup section where you can enter your Extension ID
+3. Paste the Extension ID you copied in Step 4
+4. Click **"Save ID"** to configure the connection
+
+### Step 6: Start Using Query X
+
+Once configured, the extension will automatically:
+
+- Scrape page content and metadata when you visit websites
+- Send this data to Query X for AI-powered analysis
+- Generate rich descriptions with sources and images
+
+The extension works seamlessly in the background - just browse normally and Query X will process the content!
+
+---
+
 ## ⚡ Tech Stack Overview
 
 - **Client/UI** → Next.js 15, React 19, Server Components, Tailwind v4, shadcn/ui, `next-themes`, React-Query
