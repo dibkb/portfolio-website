@@ -30,7 +30,6 @@ export function ScrollProgress({
     ...DEFAULT_SPRING_OPTIONS,
     ...(springOptions ?? {}),
   })
-
   return (
     <motion.div
       className={cn('inset-x-0 top-0 h-1 origin-left', className)}

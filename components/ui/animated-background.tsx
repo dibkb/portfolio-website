@@ -31,7 +31,6 @@ export function AnimatedBackground({
 }: AnimatedBackgroundProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
   const uniqueId = useId()
-
   const handleSetActiveId = (id: string | null) => {
     setActiveId(id)
 
