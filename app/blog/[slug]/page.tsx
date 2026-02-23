@@ -3,13 +3,13 @@ import { notFound } from 'next/navigation'
 import { generateBlogMetadata, BLOG_SEO_DATA } from '@/lib/seo'
 import { WEBSITE_URL } from '@/lib/constants'
 
-// Import all MDX content
-import QueryX from '../query-x/page.mdx'
-import TesseractEditor from '../tesseract-editor-working/page.mdx'
-import BroTube from '../bro-tube/page.mdx'
-import CinemaLens from '../cinema-lens-working/page.mdx'
-import ExcelAi from '../excel-ai/page.mdx'
-import BrowserAutomation from '../browser-automation/page.mdx'
+// Import all MDX content from content directory
+import QueryX from '@/content/blog/query-x.mdx'
+import TesseractEditor from '@/content/blog/tesseract-editor-working.mdx'
+import BroTube from '@/content/blog/bro-tube.mdx'
+import CinemaLens from '@/content/blog/cinema-lens-working.mdx'
+import ExcelAi from '@/content/blog/excel-ai.mdx'
+import BrowserAutomation from '@/content/blog/browser-automation.mdx'
 
 const BLOG_COMPONENTS: Record<string, React.ComponentType> = {
   'query-x': QueryX,
@@ -55,7 +55,7 @@ function ArticleJsonLd({ slug }: { slug: string }) {
     headline: seoData.title,
     description: seoData.description,
     url: `${WEBSITE_URL}/blog/${slug}`,
-    image: `${WEBSITE_URL}/og-image.png`,
+    image: `${WEBSITE_URL}/blog/${slug}/opengraph-image`,
     author: {
       '@type': 'Person',
       name: 'Dibas K Borborah',

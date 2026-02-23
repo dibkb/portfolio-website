@@ -5,17 +5,14 @@ type BlogMetadataProps = {
   title: string
   description: string
   slug: string
-  image?: string
 }
 
 export function generateBlogMetadata({
   title,
   description,
   slug,
-  image,
 }: BlogMetadataProps): Metadata {
   const url = `${WEBSITE_URL}/blog/${slug}`
-  const ogImage = image || `${WEBSITE_URL}/og-image.png`
 
   return {
     title,
@@ -26,54 +23,15 @@ export function generateBlogMetadata({
       title,
       description,
       siteName: SITE_NAME,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
       creator: TWITTER_HANDLE,
-      images: [ogImage],
     },
     alternates: {
       canonical: url,
-    },
-  }
-}
-
-export function generateArticleJsonLd({
-  title,
-  description,
-  slug,
-  image,
-}: BlogMetadataProps) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    description,
-    url: `${WEBSITE_URL}/blog/${slug}`,
-    image: image || `${WEBSITE_URL}/og-image.png`,
-    author: {
-      '@type': 'Person',
-      name: 'Dibas K Borborah',
-      url: WEBSITE_URL,
-    },
-    publisher: {
-      '@type': 'Person',
-      name: 'Dibas K Borborah',
-      url: WEBSITE_URL,
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${WEBSITE_URL}/blog/${slug}`,
     },
   }
 }

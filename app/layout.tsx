@@ -60,21 +60,12 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: `${WEBSITE_URL}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} - Full Stack Engineer & AI/ML Enthusiast`,
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
     creator: TWITTER_HANDLE,
-    images: [`${WEBSITE_URL}/og-image.png`],
   },
   alternates: {
     canonical: WEBSITE_URL,
@@ -103,7 +94,7 @@ function PersonJsonLd() {
     '@type': 'Person',
     name: 'Dibas K Borborah',
     url: WEBSITE_URL,
-    image: `${WEBSITE_URL}/og-image.png`,
+    image: `${WEBSITE_URL}/opengraph-image`,
     jobTitle: 'Full Stack Engineer',
     worksFor: {
       '@type': 'Organization',
