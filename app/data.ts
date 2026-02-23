@@ -213,7 +213,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'Twitter',
-    link: 'https://twitter.com/dkborborah',
+    link: 'https://twitter.com/fromdibas',
   },
   {
     label: 'LinkedIn',
