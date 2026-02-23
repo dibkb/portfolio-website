@@ -100,10 +100,23 @@ export const PROJECTS: Project[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
+    company: 'Mavic AI',
+    title: 'Full Stack Engineer',
+    start: 'November 2025',
+    end: 'Present',
+    link: 'https://www.mavic.ai/',
+    id: 'work00',
+    details: [
+      'Built an internal LLM evaluation dashboard using Promptfoo, enabling prompt engineers to test model outputs against real user queries',
+      'Designed an agent-driven prompt optimization pipeline that auto-improves and versions prompts based on evaluation scores',
+      'Implemented a Stripe-backed credit ledger system for auditability, tracking deposits, cancellations, and usage-based deductions',
+    ],
+  },
+  {
     company: 'Roger AI (YC W24)',
     title: 'Founding Engineer',
     start: 'June 2025',
-    end: 'Present',
+    end: 'October 2025',
     link: 'https://www.hireroger.com/',
     id: 'work01',
     details: [
